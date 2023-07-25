@@ -1,0 +1,16 @@
+const String baseUrl = 'https://eightballapi.com/api';
+const String appName = 'Magic Ball';
+const String failedRequest ='failed request';
+const String notActive = 'notActive';
+const String loading = 'loading';
+const String success = 'success';
+const String error = 'error';
+const String emptyBallPath = 'docs/assets/ball_empty.png';
+const String redBallPath = 'docs/assets/ball_red.png';
+const String starsPath = 'docs/assets/stars.png';
+const String smallStarsPath = 'docs/assets/small_stars.png';
+const String ellipseBluePath = 'docs/assets/ellipse_blue.png';
+const String ellipseRedPath = 'docs/assets/ellipse_red.png';
+const String ellipseGlowPath = 'docs/assets/ellipse_glow.png';
+const String ellipseGlowRedPath = 'docs/assets/ellipse_glow_red.png';
+const String whatToDoApp = 'Нажмите на шар';
