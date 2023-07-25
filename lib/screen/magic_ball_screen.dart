@@ -9,12 +9,9 @@ import 'package:surf_practice_magic_ball/widgets/magic_ball_image.dart';
 class MagicBallScreen extends StatelessWidget {
   const MagicBallScreen({Key? key}) : super(key: key);
 
-  Widget body(BuildContext context, state) {
-    if (state is MagicBallErrorState) {
-      return const MagicBallImage(
-        state: error,
-      );
-    }
+  Widget _body(BuildContext context, state) {
+
+    // loading
     if (state is MagicBallLoadingState) {
       return const Stack(
         alignment: AlignmentDirectional.center,
@@ -25,6 +22,8 @@ class MagicBallScreen extends StatelessWidget {
         ],
       );
     }
+
+    // Loaded
     if (state is MagicBallLoadedState) {
       return Stack(
         alignment: AlignmentDirectional.center,
@@ -43,6 +42,13 @@ class MagicBallScreen extends StatelessWidget {
         ],
       );
     }
+
+    // loading error
+    if (state is MagicBallErrorState) {
+      return const MagicBallImage(
+        state: error,
+      );
+    }
     return const MagicBallImage(state: initState);
   }
 
@@ -58,8 +64,9 @@ class MagicBallScreen extends StatelessWidget {
             child: BlocBuilder<MagicBallBloc, MagicBallState>(
               builder: (context, state) {
                 final magicBallBloc = BlocProvider.of<MagicBallBloc>(context);
+                // Ball click actions
                 return GestureDetector(
-                  child: body(context, state),
+                  child: _body(context, state),
                   onTap: () {
                     if (state is MagicBallInitialState) {
                       magicBallBloc.add(MagicBallLoadingEvent());
@@ -80,6 +87,8 @@ class MagicBallScreen extends StatelessWidget {
               },
             ),
           ),
+
+          // Text What to do with app
           SizedBox(
             height: MediaQuery.of(context).size.height / 5,
             child: const Align(

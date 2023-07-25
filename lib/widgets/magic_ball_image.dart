@@ -7,8 +7,9 @@ class MagicBallImage extends StatelessWidget {
 
   const MagicBallImage({super.key, required this.state});
 
-  Widget picture(BuildContext context) => Column(
+  Widget _picture(BuildContext context) => Column(
         children: [
+
           // Magic Ball images
           Center(
             child: Stack(
@@ -34,6 +35,7 @@ class MagicBallImage extends StatelessWidget {
               ],
             ),
           ),
+
           // Bottom shadow images
           Center(
             child: Stack(
@@ -55,6 +57,6 @@ class MagicBallImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return picture(context);
+    return _picture(context);
   }
 }
