@@ -9,24 +9,19 @@ class MagicBallBloc extends Bloc<MagicBallEvent, MagicBallState> {
   MagicBallBloc() : super(MagicBallInitialState()) {
     late final DataRepository dataRepository = DataRepository();
     on<MagicBallLoadEvent>(
-          (event, emit) async {
+      (event, emit) async {
         LoadedAnswerModel loadedAnswer = await dataRepository.fetchAnswer();
         String answer = loadedAnswer.reading;
         if (loadedAnswer.isSuccess) {
-          emit(MagicBallLoadedState(
-            answer: answer,
-          ));
-          print('SUCCESS');
+          emit(MagicBallLoadedState(answer: answer));
         } else {
           emit(MagicBallErrorState(error: failedRequest));
-          print('FAIL');
         }
       },
     );
     on<MagicBallLoadingEvent>(
-          (event, emit) async {
-          emit(MagicBallLoadingState(
-          ));
+      (event, emit) async {
+        emit(MagicBallLoadingState());
       },
     );
   }

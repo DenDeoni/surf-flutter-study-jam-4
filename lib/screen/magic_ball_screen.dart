@@ -11,13 +11,11 @@ class MagicBallScreen extends StatelessWidget {
 
   Widget body(BuildContext context, state) {
     if (state is MagicBallErrorState) {
-      print('ERROR STATE');
       return const MagicBallImage(
         state: error,
       );
     }
     if (state is MagicBallLoadingState) {
-      print('LOADING STATE');
       return const Stack(
         alignment: AlignmentDirectional.center,
         children: [
@@ -28,7 +26,6 @@ class MagicBallScreen extends StatelessWidget {
       );
     }
     if (state is MagicBallLoadedState) {
-      print('LOADED STATE');
       return Stack(
         alignment: AlignmentDirectional.center,
         children: [
