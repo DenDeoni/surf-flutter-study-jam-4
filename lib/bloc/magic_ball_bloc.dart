@@ -12,12 +12,14 @@ class MagicBallBloc extends Bloc<MagicBallEvent, MagicBallState> {
           (event, emit) async {
         LoadedAnswerModel loadedAnswer = await dataRepository.fetchAnswer();
         String answer = loadedAnswer.reading;
-        try {
+        if (loadedAnswer.isSuccess) {
           emit(MagicBallLoadedState(
             answer: answer,
           ));
-        } catch (e) {
+          print('SUCCESS');
+        } else {
           emit(MagicBallErrorState(error: failedRequest));
+          print('FAIL');
         }
       },
     );

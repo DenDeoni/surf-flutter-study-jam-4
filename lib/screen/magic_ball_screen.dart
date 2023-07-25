@@ -11,29 +11,24 @@ class MagicBallScreen extends StatelessWidget {
 
   Widget body(BuildContext context, state) {
     if (state is MagicBallErrorState) {
+      print('ERROR STATE');
       return const MagicBallImage(
         state: error,
       );
     }
     if (state is MagicBallLoadingState) {
-      return Stack(
+      print('LOADING STATE');
+      return const Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          const MagicBallImage(
-            state: success,
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width/2,
-            child: const Text(
-              '',
-              style: TextStyle(color: Colors.white, fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
+          MagicBallImage(
+            state: loading,
           ),
         ],
       );
     }
     if (state is MagicBallLoadedState) {
+      print('LOADED STATE');
       return Stack(
         alignment: AlignmentDirectional.center,
         children: [
@@ -41,7 +36,7 @@ class MagicBallScreen extends StatelessWidget {
             state: success,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width/2,
+            width: MediaQuery.of(context).size.width / 2,
             child: Text(
               state.answer,
               style: const TextStyle(color: Colors.white, fontSize: 20),
@@ -51,9 +46,7 @@ class MagicBallScreen extends StatelessWidget {
         ],
       );
     }
-    return const MagicBallImage(
-      state: notActive,
-    );
+    return const MagicBallImage(state: initState);
   }
 
   @override
@@ -91,11 +84,13 @@ class MagicBallScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height/5,
+            height: MediaQuery.of(context).size.height / 5,
             child: const Align(
               alignment: Alignment.bottomCenter,
-              child: Text(whatToDoApp,
-              style: TextStyle(color: Colors.white54),),
+              child: Text(
+                whatToDoApp,
+                style: TextStyle(color: Colors.white54),
+              ),
             ),
           )
         ],

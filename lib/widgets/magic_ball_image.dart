@@ -9,15 +9,15 @@ class MagicBallImage extends StatelessWidget {
 
   Widget picture(BuildContext context) => Column(
         children: [
+          // Magic Ball images
           Center(
             child: Stack(
               alignment: AlignmentDirectional.center,
               children: [
                 Image.asset(
                   state == error ? redBallPath : emptyBallPath,
-
                 ),
-                if (state == notActive || state == error)
+                if (state == initState || state == error)
                   Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
@@ -35,6 +35,7 @@ class MagicBallImage extends StatelessWidget {
               ],
             ),
           ),
+          // Bottom shadow images
           Center(
             child: Stack(
               alignment: AlignmentDirectional.center,

@@ -1,7 +1,7 @@
 const String baseUrl = 'https://eightballapi.com/api';
 const String appName = 'Magic Ball';
 const String failedRequest ='failed request';
-const String notActive = 'notActive';
+const String initState = 'initState';
 const String loading = 'loading';
 const String success = 'success';
 const String error = 'error';
