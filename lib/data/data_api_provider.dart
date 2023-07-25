@@ -6,7 +6,6 @@ import 'package:surf_practice_magic_ball/utils/constants.dart';
 
 class DataApiProvider {
   final RetryClient _client = RetryClient(http.Client());
-
   Future<Map<String, dynamic>> getDataFromNetwork(String url) async {
     try {
       final Response response = await _client.get(Uri.parse(url));

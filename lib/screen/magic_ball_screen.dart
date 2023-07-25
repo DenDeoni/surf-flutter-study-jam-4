@@ -16,14 +16,15 @@ class MagicBallScreen extends StatelessWidget {
       );
     }
     if (state is MagicBallLoadingState) {
-      return const Stack(
+      return Stack(
         alignment: AlignmentDirectional.center,
         children: [
-          MagicBallImage(
+          const MagicBallImage(
             state: success,
           ),
           SizedBox(
-            child: Text(
+            width: MediaQuery.of(context).size.width/2,
+            child: const Text(
               '',
               style: TextStyle(color: Colors.white, fontSize: 20),
               textAlign: TextAlign.center,
@@ -67,7 +68,7 @@ class MagicBallScreen extends StatelessWidget {
             child: BlocBuilder<MagicBallBloc, MagicBallState>(
               builder: (context, state) {
                 final magicBallBloc = BlocProvider.of<MagicBallBloc>(context);
-                return InkWell(
+                return GestureDetector(
                   child: body(context, state),
                   onTap: () {
                     if (state is MagicBallInitialState) {
@@ -83,15 +84,14 @@ class MagicBallScreen extends StatelessWidget {
                     if (state is MagicBallLoadedState) {
                       magicBallBloc.add(MagicBallLoadingEvent());
                       magicBallBloc.add(MagicBallLoadEvent());
-
                     }
                   },
                 );
               },
             ),
           ),
-          Container(
-            height: MediaQuery.of(context).size.height/6,
+          SizedBox(
+            height: MediaQuery.of(context).size.height/5,
             child: const Align(
               alignment: Alignment.bottomCenter,
               child: Text(whatToDoApp,

@@ -23,12 +23,12 @@ class MagicBallImage extends StatelessWidget {
                     children: [
                       Image.asset(
                         starsPath,
-                        width: MediaQuery.of(context).size.width-150,
+                        width: MediaQuery.of(context).size.width/1.6,
 
                       ),
                       Image.asset(
                         smallStarsPath,
-                        width: MediaQuery.of(context).size.width-100,
+                        width: MediaQuery.of(context).size.width/1.3,
                       ),
                     ],
                   ),
@@ -40,12 +40,12 @@ class MagicBallImage extends StatelessWidget {
               alignment: AlignmentDirectional.center,
               children: [
                 Image.asset(
-                  ellipseGlowPath,
-                  width: MediaQuery.of(context).size.width-150,
+                  state == error ? ellipseGlowRedPath : ellipseGlowPath,
+                  width: MediaQuery.of(context).size.width/2,
                 ),
                 Image.asset(
                   state == error ? ellipseRedPath: ellipseBluePath,
-                  width: MediaQuery.of(context).size.width-280,
+                  width: MediaQuery.of(context).size.width/4,
                 ),
 
               ],
@@ -56,6 +56,7 @@ class MagicBallImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('STATE: $state');
     return picture(context);
   }
 }

@@ -6,13 +6,11 @@ class DataRepository {
   Future<LoadedAnswerModel> fetchAnswer() async {
     try {
       final Map<String, dynamic> loadedData = await _retrieveData(baseUrl);
-
       return LoadedAnswerModel(reading: loadedData['reading'], isSuccess: true);
     } catch (e) {
       return const LoadedAnswerModel(reading: '', isSuccess: false);
     }
   }
-
   Future<Map<String, dynamic>> _retrieveData(final String url) async {
     final Map<String, dynamic> loadedData = await DataApiProvider().getDataFromNetwork(url);
     return loadedData;
